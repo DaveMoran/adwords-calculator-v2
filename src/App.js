@@ -21,8 +21,11 @@ const App = () => {
   const [numOfAccounts, setNumOfAccounts] = useState(0)
 
   const handleStartingBudget = (event) => {
-    let val = event.target.value
-    setStartingBudget(val)
+    setStartingBudget(event.target.value)
+  }
+
+  const handleNumOfAccounts = (event) => {
+    setNumOfAccounts(event.target.value)
   }
 
   const currDate = () => {
@@ -67,7 +70,8 @@ const App = () => {
                   label="How many accounts do you have?"
                   inputID="numOfAccounts"
                   type="number"
-                  value={numOfAccounts} />
+                  value={numOfAccounts}
+                  onChange={handleNumOfAccounts} />
                 <br />
                 <StepInput
                   label="What's your starting budget?"
