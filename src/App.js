@@ -2,11 +2,15 @@ import React, {useState} from 'react'
 import './App.css';
 
 const StepInput = (props) => {
-  const {label, type, inputID, value} = props
+  const {label, type, inputID, value, onChange} = props
   return (
     <label>
       {label}
-      <input type={type} id={inputID} value={value}/>
+      <input 
+        type={type} 
+        id={inputID} 
+        value={value}
+        onChange={onChange}/>
     </label>
   )
 }
@@ -15,6 +19,11 @@ const StepInput = (props) => {
 const App = () => {
   const [startingBudget, setStartingBudget] = useState(0)
   const [numOfAccounts, setNumOfAccounts] = useState(0)
+
+  const handleStartingBudget = (event) => {
+    let val = event.target.value
+    setStartingBudget(val)
+  }
 
   const currDate = () => {
     return new Date().toLocaleDateString()
@@ -52,7 +61,7 @@ const App = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <div id="stepOne" class="step">
+              <div id="stepOne" className="step">
                 <h2>Step 1</h2>
                 <StepInput
                   label="How many accounts do you have?"
@@ -64,7 +73,8 @@ const App = () => {
                   label="What's your starting budget?"
                   inputID="startingBudget"
                   type="number" 
-                  value={startingBudget}/>
+                  value={startingBudget}
+                  onChange={handleStartingBudget}/>
                 <br />
                 <button id="saveStepOne">Next</button>
               </div>
