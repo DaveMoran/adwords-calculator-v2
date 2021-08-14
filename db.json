@@ -1,6 +1,24 @@
 {
   "account": {
     "startingBudget": 1000,
-    "numOfAccounts": 4
+    "numOfAccounts": 4,
+    "accounts": [
+      {
+        "name": "account 1",
+        "budget": 250
+      },
+      {
+        "name": "account 2",
+        "budget": 300
+      },
+      {
+        "name": "account 3",
+        "budget": 100
+      },
+      {
+        "name": "account 4",
+        "budget": 350
+      }
+    ]
   }
 }
