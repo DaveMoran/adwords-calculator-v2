@@ -1,6 +1,17 @@
 {
   "account": {
     "startingBudget": 800,
-    "accounts": []
+    "accounts": [
+      {
+        "id": 0,
+        "name": "Boltbus",
+        "budget": "200"
+      },
+      {
+        "id": 1,
+        "name": "Megabus",
+        "budget": "500"
+      }
+    ]
   }
 }

@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import StepInput from './StepInput'
 
@@ -5,9 +6,7 @@ const StepTwo = (props) => {
   const { account } = props
   const [ accounts, setAccounts ] = useState([])
 
-  const addAccount = (event) => {
-    event.preventDefault()
-
+  const addAccount = () => {
     const newAccount = {
       id: (accounts.length === 0 ? 0 : accounts[accounts.length - 1].id + 1),
       name: "",
@@ -39,6 +38,19 @@ const StepTwo = (props) => {
     setAccounts(newAccounts)
   }
 
+  const handleSaveStepTwo = () => {
+    const accountObject = {
+      ...account,
+      accounts: accounts
+    }
+
+    axios
+      .post('http://localhost:3001/account', accountObject)
+      .then(response => {
+        console.log(response)
+      })
+  }
+
   return (
     <div className="step" id="stepTwo">
       <h3>Step Two</h3>
@@ -60,7 +72,7 @@ const StepTwo = (props) => {
           </li>
         ))}
         <button onClick={addAccount}>Add Account</button>
-        <button>Next</button>
+        <button onClick={handleSaveStepTwo}>Next</button>
       </ul>
     </div>
   )
