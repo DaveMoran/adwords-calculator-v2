@@ -7,7 +7,7 @@ function App() {
         <h1>AdWords Calculator</h1>
       </header>
       <main>
-        <div class="container">
+        <div className="container">
           <h2>Outline</h2>
           <h3>v1: Import from memory</h3>
           <ul>
@@ -28,6 +28,12 @@ function App() {
             <li>Add sync button to pull values and calculate new budgets</li>
             <li>Send new budgets to adwords, save</li>
           </ul>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col"></div>
+            <div className="col"></div>
+          </div>
         </div>
       </main>
     </div>
