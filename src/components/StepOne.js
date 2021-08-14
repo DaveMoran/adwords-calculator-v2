@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import StepInput from './StepInput'
 
-const StepOne = () => {
-  const [startingBudget, setStartingBudget] = useState(0)
-  const [numOfAccounts, setNumOfAccounts] = useState(0)
-  const [showStepOne, setShowStepOne] = useState(true)
-
+const StepOne = (props) => {
+  const {account, handleShowStepOne} = props
+  const [startingBudget, setStartingBudget] = useState(account.startingBudget)
+  const [numOfAccounts, setNumOfAccounts] = useState(account.numOfAccounts)
+  
   const handleStartingBudget = (event) => {
     let val = parseInt(event.target.value)
     if (val) { setStartingBudget(val) }
@@ -14,10 +14,6 @@ const StepOne = () => {
   const handleNumOfAccounts = (event) => {
     let val = parseInt(event.target.value)
     if (val) { setNumOfAccounts(val) }
-  }
-
-  const handleShowStepOne = () => {
-    setShowStepOne(!showStepOne)
   }
 
   return (

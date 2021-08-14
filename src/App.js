@@ -5,9 +5,7 @@ import './App.css';
 
 const App = () => {
   const [account, setAccount] = useState({})
-  const currDate = () => {
-    return new Date().toLocaleDateString()
-  }
+  const [showStepOne, setShowStepOne] = useState(false)
 
   useEffect(() => {
     console.log('effect')
@@ -16,8 +14,13 @@ const App = () => {
       .then(response => {
         console.log('promise fulfilled')
         setAccount(response.data)
+        setShowStepOne(true)
       })
   }, [])
+
+  const handleShowStepOne = () => {
+    setShowStepOne(!showStepOne)
+  }
 
   return (
     <div className="App">
@@ -51,10 +54,11 @@ const App = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <StepOne account={account}/>
-            </div>
-            <div className="col">
-              <p>{currDate()}</p>
+              { showStepOne && 
+                <StepOne 
+                  account={account}
+                  showStepOne={showStepOne}
+                  handleShowStepOne={handleShowStepOne} /> }
             </div>
           </div>
         </div>
