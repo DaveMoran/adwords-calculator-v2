@@ -29,9 +29,25 @@ function App() {
             <li>Send new budgets to adwords, save</li>
           </ul>
         </div>
+        <hr />
         <div className="container">
           <div className="row">
-            <div className="col"></div>
+            <div className="col">
+              <div id="stepOne" class="step">
+                <h2>Step 1</h2>
+                <label>
+                  How many accounts do you have?
+                  <input id="numOfAccounts" type="number" />
+                </label>
+                <br />
+                <label>
+                  What's your starting budget?
+                  <input id="startingBudget" type="number" />
+                </label>
+                <br />
+                <button id="saveStepOne">Next</button>
+              </div>
+            </div>
             <div className="col"></div>
           </div>
         </div>
