@@ -19,6 +19,7 @@ const StepInput = (props) => {
 const App = () => {
   const [startingBudget, setStartingBudget] = useState(0)
   const [numOfAccounts, setNumOfAccounts] = useState(0)
+  const [showStepOne, setShowStepOne] = useState(true)
 
   const handleStartingBudget = (event) => {
     let val = parseInt(event.target.value)
@@ -28,6 +29,10 @@ const App = () => {
   const handleNumOfAccounts = (event) => {
     let val = parseInt(event.target.value)
     if(val) { setNumOfAccounts(val) } 
+  }
+
+  const handleShowStepOne = () => {
+    setShowStepOne(!showStepOne)
   }
 
   const currDate = () => {
@@ -66,24 +71,26 @@ const App = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <div id="stepOne" className="step">
-                <h2>Step 1</h2>
-                <StepInput
-                  label="How many accounts do you have?"
-                  inputID="numOfAccounts"
-                  type="number"
-                  value={numOfAccounts}
-                  onChange={handleNumOfAccounts} />
-                <br />
-                <StepInput
-                  label="What's your starting budget?"
-                  inputID="startingBudget"
-                  type="number" 
-                  value={startingBudget}
-                  onChange={handleStartingBudget}/>
-                <br />
-                <button id="saveStepOne">Next</button>
-              </div>
+              {showStepOne === true && 
+                <div id="stepOne" className="step">
+                  <h2>Step 1</h2>
+                  <StepInput
+                    label="How many accounts do you have?"
+                    inputID="numOfAccounts"
+                    type="number"
+                    value={numOfAccounts}
+                    onChange={handleNumOfAccounts} />
+                  <br />
+                  <StepInput
+                    label="What's your starting budget?"
+                    inputID="startingBudget"
+                    type="number" 
+                    value={startingBudget}
+                    onChange={handleStartingBudget}/>
+                  <br />
+                  <button id="saveStepOne" onClick={handleShowStepOne}>Next</button>
+                </div>
+              }
             </div>
             <div className="col">
               <p>{currDate()}</p>
