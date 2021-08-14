@@ -1,17 +1,21 @@
 import './App.css';
 
 const StepInput = (props) => {
+  const {label, type, inputID} = props
   return (
     <label>
-      {props.label}
-      <input type={props.type} id={props.inputID} />
+      {label}
+      <input type={type} id={inputID} />
     </label>
   )
 }
 
 
 const App = () => {
-  console.log('Hello World')
+  const currDate = () => {
+    return new Date().toLocaleDateString()
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -59,7 +63,9 @@ const App = () => {
                 <button id="saveStepOne">Next</button>
               </div>
             </div>
-            <div className="col"></div>
+            <div className="col">
+              <p>{currDate()}</p>
+            </div>
           </div>
         </div>
       </main>
