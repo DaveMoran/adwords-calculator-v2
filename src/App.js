@@ -21,11 +21,13 @@ const App = () => {
   const [numOfAccounts, setNumOfAccounts] = useState(0)
 
   const handleStartingBudget = (event) => {
-    setStartingBudget(event.target.value)
+    let val = parseInt(event.target.value)
+    if(val) { setStartingBudget(val) } 
   }
 
   const handleNumOfAccounts = (event) => {
-    setNumOfAccounts(event.target.value)
+    let val = parseInt(event.target.value)
+    if(val) { setNumOfAccounts(val) } 
   }
 
   const currDate = () => {
