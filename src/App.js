@@ -1,17 +1,21 @@
+import React, {useState} from 'react'
 import './App.css';
 
 const StepInput = (props) => {
-  const {label, type, inputID} = props
+  const {label, type, inputID, value} = props
   return (
     <label>
       {label}
-      <input type={type} id={inputID} />
+      <input type={type} id={inputID} value={value}/>
     </label>
   )
 }
 
 
 const App = () => {
+  const [startingBudget, setStartingBudget] = useState(0)
+  const [numOfAccounts, setNumOfAccounts] = useState(0)
+
   const currDate = () => {
     return new Date().toLocaleDateString()
   }
@@ -53,12 +57,14 @@ const App = () => {
                 <StepInput
                   label="How many accounts do you have?"
                   inputID="numOfAccounts"
-                  type="number" />
+                  type="number"
+                  value={numOfAccounts} />
                 <br />
                 <StepInput
                   label="What's your starting budget?"
                   inputID="startingBudget"
-                  type="number" />
+                  type="number" 
+                  value={startingBudget}/>
                 <br />
                 <button id="saveStepOne">Next</button>
               </div>
