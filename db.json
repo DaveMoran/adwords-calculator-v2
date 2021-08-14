@@ -1,7 +1,7 @@
 {
   "account": {
-    "startingBudget": 1000,
-    "numOfAccounts": 4,
+    "startingBudget": 800,
+    "numOfAccounts": 2,
     "accounts": [
       {
         "name": "account 1",

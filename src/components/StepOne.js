@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import StepInput from './StepInput'
 
@@ -8,12 +9,28 @@ const StepOne = (props) => {
   
   const handleStartingBudget = (event) => {
     let val = parseInt(event.target.value)
-    if (val) { setStartingBudget(val) }
+    if (val ) { setStartingBudget(val) }
   }
 
   const handleNumOfAccounts = (event) => {
     let val = parseInt(event.target.value)
     if (val) { setNumOfAccounts(val) }
+  }
+
+  const handleSaveStepOne = () => {
+    const accountObject = {
+      ...account,
+      startingBudget: startingBudget,
+      numOfAccounts: numOfAccounts
+    }
+
+    axios
+      .post('http://localhost:3001/account', accountObject)
+      .then(response => {
+        console.log(response)
+      })
+
+    handleShowStepOne()
   }
 
   return (
@@ -33,7 +50,7 @@ const StepOne = (props) => {
         value={startingBudget}
         onChange={handleStartingBudget} />
       <br />
-      <button id="saveStepOne" onClick={handleShowStepOne}>Next</button>
+      <button id="saveStepOne" onClick={handleSaveStepOne}>Next</button>
     </div>
   )
 }
