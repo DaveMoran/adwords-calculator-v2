@@ -1,6 +1,17 @@
 import './App.css';
 
-function App() {
+const StepInput = (props) => {
+  return (
+    <label>
+      {props.label}
+      <input type={props.type} id={props.inputID} />
+    </label>
+  )
+}
+
+
+const App = () => {
+  console.log('Hello World')
   return (
     <div className="App">
       <header className="App-header">
@@ -35,15 +46,15 @@ function App() {
             <div className="col">
               <div id="stepOne" class="step">
                 <h2>Step 1</h2>
-                <label>
-                  How many accounts do you have?
-                  <input id="numOfAccounts" type="number" />
-                </label>
+                <StepInput
+                  label="How many accounts do you have?"
+                  inputID="numOfAccounts"
+                  type="number" />
                 <br />
-                <label>
-                  What's your starting budget?
-                  <input id="startingBudget" type="number" />
-                </label>
+                <StepInput
+                  label="What's your starting budget?"
+                  inputID="startingBudget"
+                  type="number" />
                 <br />
                 <button id="saveStepOne">Next</button>
               </div>
