@@ -9,7 +9,7 @@ const StepTwo = (props) => {
     event.preventDefault()
 
     const newAccount = {
-      id: accounts.length + 1,
+      id: (accounts.length === 0 ? 0 : accounts[accounts.length - 1].id + 1),
       name: "",
       budget: ""
     }
