@@ -1,20 +1,6 @@
 import React, {useState} from 'react'
+import StepInput from './components/StepInput';
 import './App.css';
-
-const StepInput = (props) => {
-  const {label, type, inputID, value, onChange} = props
-  return (
-    <label>
-      {label}
-      <input 
-        type={type} 
-        id={inputID} 
-        value={value}
-        onChange={onChange}/>
-    </label>
-  )
-}
-
 
 const App = () => {
   const [startingBudget, setStartingBudget] = useState(0)
