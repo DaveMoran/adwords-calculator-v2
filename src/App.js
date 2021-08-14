@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import StepOne from './components/StepOne';
+import StepTwo from './components/StepTwo';
 import axios from 'axios';
 import './App.css';
 
@@ -18,9 +19,7 @@ const App = () => {
       })
   }, [])
 
-  const handleShowStepOne = () => {
-    setShowStepOne(!showStepOne)
-  }
+  const handleShowStepOne = () => { setShowStepOne(!showStepOne) }
 
   return (
     <div className="App">
@@ -58,7 +57,11 @@ const App = () => {
                 <StepOne 
                   account={account}
                   showStepOne={showStepOne}
-                  handleShowStepOne={handleShowStepOne} /> }
+                  handleShowStepOne={handleShowStepOne} /> 
+              }
+            </div>
+            <div className="col">
+              <StepTwo account={account} />
             </div>
           </div>
         </div>
