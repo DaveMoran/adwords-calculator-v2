@@ -17,15 +17,26 @@ const StepTwo = (props) => {
     setAccounts(accounts.concat(newAccount))
   }
 
-  const handleNameChange = (event) => {
-    console.log(event.target.value)
-    let val = event.target.value
-    event.target.value = val
+  const handleNameChange = (id, e) => {
+    const newAccounts = []
+    accounts.forEach(account => {
+      if(account.id === id) {
+        account.name = e.target.value
+      }
+      newAccounts.push(account)
+    });
+    setAccounts(newAccounts)
   }
 
-  const handleBudgetChange = (event) => {
-    let val = event.target.value
-    event.target.value = val
+  const handleBudgetChange = (id, e) => {
+    const newAccounts = []
+    accounts.forEach(account => {
+      if (account.id === id) {
+        account.budget = e.target.value
+      }
+      newAccounts.push(account)
+    });
+    setAccounts(newAccounts)
   }
 
   return (
@@ -39,13 +50,13 @@ const StepTwo = (props) => {
               label="Name: "
               type="text"
               value={singleAccount.name}
-              onChange={handleNameChange} />
+              onChange={(e) => handleNameChange(singleAccount.id, e)} />
             <br />
             <StepInput
               label="Budget: "
               type="number"
               value={singleAccount.budget} 
-              onChange={handleBudgetChange} />
+              onChange={(e) => handleBudgetChange(singleAccount.id, e)} />
           </li>
         ))}
         <button onClick={addAccount}>Add Account</button>
