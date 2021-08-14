@@ -1,11 +1,23 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import StepOne from './components/StepOne';
+import axios from 'axios';
 import './App.css';
 
 const App = () => {
+  const [account, setAccount] = useState({})
   const currDate = () => {
     return new Date().toLocaleDateString()
   }
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/account')
+      .then(response => {
+        console.log('promise fulfilled')
+        setAccount(response.data)
+      })
+  }, [])
 
   return (
     <div className="App">
@@ -39,7 +51,7 @@ const App = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <StepOne />
+              <StepOne account={account}/>
             </div>
             <div className="col">
               <p>{currDate()}</p>
