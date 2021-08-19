@@ -3,17 +3,12 @@ import StepOne from './components/StepOne';
 import StepTwo from './components/StepTwo';
 import StepThree from './components/StepThree';
 import Notification from './components/Notification';
-import axios from 'axios';
 import accountService from './services/accounts'
-
 import './App.css';
-import accounts from './services/accounts';
 
 const App = () => {
   const [profile, setProfile] = useState({})
-  const [showStepOne, setShowStepOne] = useState(false)
-  const [showStepTwo, setShowStepTwo] = useState(false)
-  const [showStepThree, setShowStepThree] = useState(false)
+  const [showApp, setShowApp] = useState(false)
   const [message, setMessage] = useState(null)
   const [messageType, setMessageType] = useState(null)
 
@@ -22,9 +17,7 @@ const App = () => {
       .getProfile()
       .then(response => {
         setProfile(response.data)
-        setShowStepOne(true)
-        setShowStepTwo(true)
-        setShowStepThree(true)
+        setShowApp(true)
       })
   }, [])
 
@@ -53,8 +46,6 @@ const App = () => {
         setProfile(response.data)
       })
   }
-
-  const handleShowStepOne = () => { setShowStepOne(!showStepOne) }
 
   return (
     <div className="App">
@@ -85,33 +76,25 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              { showStepOne && 
-                <StepOne 
-                  profile={profile}
-                  showStepOne={showStepOne}
-                  handleShowStepOne={handleShowStepOne} />
-              }
-
-              {showStepTwo &&
+        {showApp && 
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <StepOne profile={profile} />
                 <StepTwo
                   profile={profile}
                   setMessage={setMessage}
                   setMessageType={setMessageType}
                   addAccount={addAccount} />
-              }
-            </div>
-            <div className="col">
-              {showStepThree &&
+              </div>
+              <div className="col">
                 <StepThree
                   profile={profile} />
-              }
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        }
+        </main>
     </div>
   );
 }
