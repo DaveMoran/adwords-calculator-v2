@@ -63,7 +63,7 @@ const StepTwo = (props) => {
 
   return (
     <div className="step" id="stepTwo">
-      <h3>Step Two</h3>
+      <h2>Step Two</h2>
       <p>List out your current accounts as well as their budget</p>
       <ul>
         {accounts.map(singleAccount => (

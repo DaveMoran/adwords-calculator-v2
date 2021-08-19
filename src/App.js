@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import StepOne from './components/StepOne';
 import StepTwo from './components/StepTwo';
+import StepThree from './components/StepThree';
 import axios from 'axios';
 import './App.css';
 
 const App = () => {
   const [account, setAccount] = useState({})
   const [showStepOne, setShowStepOne] = useState(false)
-  const [showStepTwo, setShowStepTwo] = useState(false)
 
   useEffect(() => {
     console.log('effect')
@@ -21,7 +21,6 @@ const App = () => {
   }, [])
 
   const handleShowStepOne = () => { setShowStepOne(!showStepOne) }
-  const handleShowStepTwo = () => { setShowStepTwo(!showStepTwo) }
 
   return (
     <div className="App">
@@ -59,14 +58,16 @@ const App = () => {
                 <StepOne 
                   account={account}
                   showStepOne={showStepOne}
-                  handleShowStepOne={handleShowStepOne}
-                  handleShowStepTwo={handleShowStepTwo} />
+                  handleShowStepOne={handleShowStepOne} />
               }
             </div>
             <div className="col">
-              { showStepTwo && 
                 <StepTwo account={account} />
-              }              
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <StepThree />
             </div>
           </div>
         </div>
