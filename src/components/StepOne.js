@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import StepInput from './StepInput'
 
 const StepOne = (props) => {
-  const {account, handleShowStepOne} = props
+  const { account, handleShowStepOne, handleShowStepTwo} = props
   const [startingBudget, setStartingBudget] = useState(account.startingBudget)
   
   const handleStartingBudget = (event) => {
@@ -24,6 +24,7 @@ const StepOne = (props) => {
       })
 
     handleShowStepOne()
+    handleShowStepTwo()
   }
 
   return (

@@ -7,6 +7,7 @@ import './App.css';
 const App = () => {
   const [account, setAccount] = useState({})
   const [showStepOne, setShowStepOne] = useState(false)
+  const [showStepTwo, setShowStepTwo] = useState(false)
 
   useEffect(() => {
     console.log('effect')
@@ -20,6 +21,7 @@ const App = () => {
   }, [])
 
   const handleShowStepOne = () => { setShowStepOne(!showStepOne) }
+  const handleShowStepTwo = () => { setShowStepTwo(!showStepTwo) }
 
   return (
     <div className="App">
@@ -57,11 +59,14 @@ const App = () => {
                 <StepOne 
                   account={account}
                   showStepOne={showStepOne}
-                  handleShowStepOne={handleShowStepOne} /> 
+                  handleShowStepOne={handleShowStepOne}
+                  handleShowStepTwo={handleShowStepTwo} />
               }
             </div>
             <div className="col">
-              <StepTwo account={account} />
+              { showStepTwo && 
+                <StepTwo account={account} />
+              }              
             </div>
           </div>
         </div>
