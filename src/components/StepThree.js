@@ -44,7 +44,12 @@ const StepThree = (props) => {
 
       newAccts.push(account)
     })
-    console.log(newAccts)
+
+    axios
+      .post('http://localhost:3001/profile', newAccts)
+      .then(response => {
+        console.log(response)
+      })
   }
 
   return (
