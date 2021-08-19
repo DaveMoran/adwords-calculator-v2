@@ -4,7 +4,10 @@ import StepTwo from './components/StepTwo';
 import StepThree from './components/StepThree';
 import Notification from './components/Notification';
 import axios from 'axios';
+import accountService from './services/accounts'
+
 import './App.css';
+import accounts from './services/accounts';
 
 const App = () => {
   const [profile, setProfile] = useState({})
@@ -15,11 +18,9 @@ const App = () => {
   const [messageType, setMessageType] = useState(null)
 
   useEffect(() => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3001/profile')
+    accountService
+      .getProfile()
       .then(response => {
-        console.log('promise fulfilled')
         setProfile(response.data)
         setShowStepOne(true)
         setShowStepTwo(true)

@@ -6,15 +6,7 @@ const StepTwo = (props) => {
   const { profile, setMessage, setMessageType } = props
   const [accounts, setAccounts] = useState(profile.accounts)
 
-  const addAccount = () => {
-    const newAccount = {
-      id: (accounts.length === 0 ? 0 : accounts[accounts.length - 1].id + 1),
-      name: "",
-      budget: ""
-    }
-
-    setAccounts(accounts.concat(newAccount))
-  }
+  
 
   const removeAccount = (id) => {
     const newAccts = accounts.filter(account => {
