@@ -51,10 +51,14 @@ const App = () => {
           </ul>
         </div>
         <hr />
-        <div className="container">
+        <div id="notificationBar" className="container">
           <div className="row">
+            <div class="col">
               <Notification message={message} messageType={messageType} />
+            </div>
           </div>
+        </div>
+        <div className="container">
           <div className="row">
             <div className="col">
               { showStepOne && 
