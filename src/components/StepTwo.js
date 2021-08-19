@@ -31,7 +31,7 @@ const StepTwo = (props) => {
     const newAccounts = []
     accounts.forEach(account => {
       if (account.id === id) {
-        account.currSpend = e.target.value
+        account.currSpend = parseInt(e.target.value)
       }
       newAccounts.push(account)
     });
@@ -42,7 +42,7 @@ const StepTwo = (props) => {
     const newAccounts = []
     accounts.forEach(account => {
       if (account.id === id) {
-        account.desiredSpend = e.target.value
+        account.desiredSpend = parseInt(e.target.value)
       }
       newAccounts.push(account)
     });
@@ -53,7 +53,7 @@ const StepTwo = (props) => {
     // Check that account values match total budget
     let cumulativeBudget = 0
     accounts.forEach(account => {
-      cumulativeBudget += parseInt(account.desiredSpend)
+      cumulativeBudget += account.desiredSpend
     })
 
     if (cumulativeBudget !== profile.startingBudget) {

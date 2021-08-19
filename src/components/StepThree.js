@@ -55,8 +55,8 @@ const StepThree = (props) => {
       <ul>  
         {accounts.map(singleAccount => (
           <li key={singleAccount.id}>
-            <p>Account: {singleAccount.name}</p>
-            <p>New Budget: TODO</p>
+            <p>Account: {singleAccount.name}<br />
+            New Budget: {singleAccount.newDaily !== null ? singleAccount.newDaily : ''}</p>
           </li>
         ))}
       </ul>

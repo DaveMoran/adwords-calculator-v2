@@ -79,10 +79,8 @@ const App = () => {
                   setMessageType={setMessageType} />
               }
             </div>
-          </div>
-          <div className="row">
             <div className="col">
-              { showStepThree &&
+              {showStepThree &&
                 <StepThree
                   profile={profile} />
               }

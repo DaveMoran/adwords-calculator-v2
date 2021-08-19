@@ -7,18 +7,24 @@
         "name": "red",
         "desiredSpend": 1000,
         "currSpend": 350,
+        "needToSpend": 54.16,
+        "newDaily": 54.16
       },
       {
         "id": 1,
         "name": "blue",
         "desiredSpend": 1000,
         "currSpend": "1200",
+        "needToSpend": 16.66,
+        "newDaily": 0
       },
       {
         "id": 2,
         "name": "green",
         "desiredSpend": 1000,
         "currSpend": 100,
+        "needToSpend": 75,
+        "newDaily": 75
       }
     ]
   }
