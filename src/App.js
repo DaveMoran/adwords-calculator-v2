@@ -34,8 +34,8 @@ const App = () => {
 
     accountService
       .create(accountObject)
-      .then(returnedAccount => {
-        setAccounts(accounts.concat(returnedAccount))
+      .then(response => {
+        setAccounts(accounts.concat(response.data))
       })
   }
 
@@ -43,7 +43,10 @@ const App = () => {
     accountService
       .deleteAccount(id)
       .then(response => {
-        console.log(response.data)
+        const filteredAccounts = accounts.filter(account => {
+          if (account.id !== id) { return account }
+        })
+        setAccounts(filteredAccounts)
       })
   }
 
