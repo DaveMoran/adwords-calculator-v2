@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import StepOne from './components/StepOne';
 import StepTwo from './components/StepTwo';
 import StepThree from './components/StepThree';
+import Notification from './components/Notification';
 import axios from 'axios';
 import './App.css';
 
@@ -9,6 +10,8 @@ const App = () => {
   const [profile, setProfile] = useState({})
   const [showStepOne, setShowStepOne] = useState(false)
   const [showStepTwo, setShowStepTwo] = useState(false)
+  const [message, setMessage] = useState('Some error happened...')
+  const [messageType, setMessageType] = useState('error')
 
   useEffect(() => {
     console.log('effect')
@@ -54,6 +57,9 @@ const App = () => {
         </div>
         <hr />
         <div className="container">
+          <div className="row">
+              <Notification message={message} messageType={messageType} />
+          </div>
           <div className="row">
             <div className="col">
               { showStepOne && 
