@@ -30,17 +30,21 @@ const StepThree = (props) => {
         daysRemaining = 30 - currDay;
     }
 
-    // look at ratios of existing budgets
-    const acctWithRatios = []
+    const newAccts = []
     accounts.forEach(account => {
-      account.ratio = Math.floor((account.desiredSpend / profile.startingBudget) * 100) / 100
-      acctWithRatios.push(account)
+      // look at remaining amt for existing budgets, divide by remaining days
+      let newDaily = account.desiredSpend - account.currSpend
+      if (newDaily < 0) {
+        // If number is negative (overspend), set budget to 0
+        account.newDaily = 0
+      } else {
+        // Else, set new number
+        account.newDaily = Math.floor((newDaily / daysRemaining) * 100) / 100
+      }
+
+      newAccts.push(account)
     })
-    
-    console.log(acctWithRatios)
-    // look at remaining amount for existing budgets
-    // divide remaining amount by remaining days
-    // If number is neative (overspend), set budget to 0
+    console.log(newAccts)
   }
 
   return (

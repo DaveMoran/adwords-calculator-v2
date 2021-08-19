@@ -6,19 +6,19 @@
         "id": 0,
         "name": "red",
         "desiredSpend": 1000,
-        "currSpend": 350
+        "currSpend": 350,
       },
       {
         "id": 1,
         "name": "blue",
         "desiredSpend": 1000,
-        "currSpend": 800
+        "currSpend": "1200",
       },
       {
         "id": 2,
         "name": "green",
         "desiredSpend": 1000,
-        "currSpend": 100
+        "currSpend": 100,
       }
     ]
   }
