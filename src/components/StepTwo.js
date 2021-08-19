@@ -95,18 +95,18 @@ const StepTwo = (props) => {
               value={singleAccount.name}
               onChange={(e) => handleNameChange(singleAccount.id, e)} />
             <br />
-            <StepInput
-              label="Current Spend: "
-              type="number"
-              value={singleAccount.currSpend}
-              onChange={(e) => handleCurrSpendChange(singleAccount.id, e)} />
-            <br />
-            <StepInput
-              label="Desired Spend: "
-              type="number"
-              value={singleAccount.desiredSpend}
-              onChange={(e) => handleDesiredSpendChange(singleAccount.id, e)} />
-            
+            <div className="input-group">
+              <StepInput
+                label="Current Spend: "
+                type="number"
+                value={singleAccount.currSpend}
+                onChange={(e) => handleCurrSpendChange(singleAccount.id, e)} />
+              <StepInput
+                label="Desired Spend: "
+                type="number"
+                value={singleAccount.desiredSpend}
+                onChange={(e) => handleDesiredSpendChange(singleAccount.id, e)} />
+              </div>
           </li>
         ))}
         <button onClick={addAccount}>Add Account</button>
