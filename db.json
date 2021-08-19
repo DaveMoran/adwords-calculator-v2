@@ -5,12 +5,20 @@
       {
         "id": 0,
         "name": "red",
-        "budget": "400"
+        "desiredSpend": 1000,
+        "currSpend": 350
       },
       {
         "id": 1,
         "name": "blue",
-        "budget": "400"
+        "desiredSpend": 1000,
+        "currSpend": 800
+      },
+      {
+        "id": 2,
+        "name": "green",
+        "desiredSpend": 1000,
+        "currSpend": 100
       }
     ]
   }
