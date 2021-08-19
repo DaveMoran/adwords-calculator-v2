@@ -109,9 +109,11 @@ const StepTwo = (props) => {
               </div>
           </li>
         ))}
+      </ul>
+      <div className="button-group">
         <button onClick={addAccount}>Add Account</button>
         <button onClick={handleSaveStepTwo}>Next</button>
-      </ul>
+      </div>
     </div>
   )
 }

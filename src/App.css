@@ -97,8 +97,21 @@ label input {
   margin-top: 5px;
 }
 
-.input-group {
+.input-group,
+.button-group {
   display: flex;
+}
+
+.button-group button {
+  margin-right: 30px;
+}
+
+.button-group button:last-child {
+  margin-right: 0;
+}
+
+#stepTwo ul{
+  margin-bottom: 50px;
 }
 
 #stepTwo li {
