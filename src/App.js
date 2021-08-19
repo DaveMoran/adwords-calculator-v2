@@ -10,6 +10,7 @@ const App = () => {
   const [profile, setProfile] = useState({})
   const [showStepOne, setShowStepOne] = useState(false)
   const [showStepTwo, setShowStepTwo] = useState(false)
+  const [showStepThree, setShowStepThree] = useState(false)
   const [message, setMessage] = useState(null)
   const [messageType, setMessageType] = useState(null)
 
@@ -22,6 +23,7 @@ const App = () => {
         setProfile(response.data)
         setShowStepOne(true)
         setShowStepTwo(true)
+        setShowStepThree(true)
       })
   }, [])
 
@@ -80,7 +82,10 @@ const App = () => {
           </div>
           <div className="row">
             <div className="col">
-              <StepThree />
+              { showStepThree &&
+                <StepThree
+                  profile={profile} />
+              }
             </div>
           </div>
         </div>
