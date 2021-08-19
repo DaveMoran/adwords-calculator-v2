@@ -45,7 +45,7 @@ const StepTwo = (props) => {
     }
 
     axios
-      .post('http://localhost:3001/account', accountObject)
+      .post('http://localhost:3001/profile', accountObject)
       .then(response => {
         console.log(response)
       })

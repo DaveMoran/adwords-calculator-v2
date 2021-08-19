@@ -11,7 +11,7 @@ const App = () => {
   useEffect(() => {
     console.log('effect')
     axios
-      .get('http://localhost:3001/account')
+      .get('http://localhost:3001/profile')
       .then(response => {
         console.log('promise fulfilled')
         setAccount(response.data)
