@@ -39,6 +39,7 @@ const App = () => {
           <h2>Outline</h2>
           <h3>v2: Improvements</h3>
           <ul>
+            <li>Host </li>
             <li>Add user account</li>
             <li>Save projects per user account</li>
           </ul>
@@ -62,10 +63,9 @@ const App = () => {
                   showStepOne={showStepOne}
                   handleShowStepOne={handleShowStepOne} />
               }
-            </div>
-            <div className="col">
-              { showStepTwo &&
-                <StepTwo 
+
+              {showStepTwo &&
+                <StepTwo
                   profile={profile}
                   setMessage={setMessage}
                   setMessageType={setMessageType} />
