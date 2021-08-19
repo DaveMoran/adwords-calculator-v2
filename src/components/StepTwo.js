@@ -4,7 +4,7 @@ import StepInput from './StepInput'
 
 const StepTwo = (props) => {
   const { 
-    profile, 
+    accounts, 
     addAccount, 
     removeAccount,
     setMessage, 
@@ -51,29 +51,29 @@ const StepTwo = (props) => {
     //   cumulativeBudget += account.desiredSpend
     // })
 
-    if (cumulativeBudget !== profile.startingBudget) {
+    // if (cumulativeBudget !== profile.startingBudget) {
 
-      setMessageType('error')
-      setMessage(
-        `Total desired spend (${cumulativeBudget}) does not equal budget (${profile.startingBudget})`
-      )
+    //   setMessageType('error')
+    //   setMessage(
+    //     `Total desired spend (${cumulativeBudget}) does not equal budget (${profile.startingBudget})`
+    //   )
 
-      setTimeout(() => {
-        setMessage(null)
-        setMessageType(null)
-      }, 5000)
+    //   setTimeout(() => {
+    //     setMessage(null)
+    //     setMessageType(null)
+    //   }, 5000)
 
-    } else {
-      const accountObject = {
-        ...profile
-      }
+    // } else {
+    //   const accountObject = {
+    //     ...profile
+    //   }
 
-      axios
-        .post('http://localhost:3001/profile', accountObject)
-        .then(response => {
-          console.log(response)
-        })
-    }
+    //   axios
+    //     .post('http://localhost:3001/profile', accountObject)
+    //     .then(response => {
+    //       console.log(response)
+    //     })
+    // }
   }
 
   return (
@@ -81,7 +81,7 @@ const StepTwo = (props) => {
       <h2>Step Two</h2>
       <p>List out your current accounts as well as their budget</p>
       <ul>
-        {profile.accounts.map(singleAccount => (
+        {accounts.map(singleAccount => (
           <li key={singleAccount.id}>
             <StepInput
               label="Name: "

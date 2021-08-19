@@ -1,29 +1,31 @@
 {
   "profile": {
-    "startingBudget": 3000,
-    "accounts": [
-      {
-        "id": 0,
-        "name": "red",
-        "desiredSpend": 1000,
-        "currSpend": 350,
-        "needToSpend": 54.16,
-        "newDaily": 54.16
-      },
-      {
-        "id": 1,
-        "name": "blue",
-        "desiredSpend": 1000,
-        "currSpend": 800,
-        "needToSpend": 16.66,
-        "newDaily": 16.66
-      },
-      {
-        "id": 2,
-        "name": "",
-        "desiredSpend": 0,
-        "currSpend": 0
-      }
-    ]
-  }
+    "startingBudget": 3000
+  },
+  "accounts": [
+    {
+      "id": 3,
+      "name": "",
+      "desiredSpend": 0,
+      "currSpend": 0
+    },
+    {
+      "id": 4,
+      "name": "",
+      "desiredSpend": 0,
+      "currSpend": 0
+    },
+    {
+      "id": 5,
+      "name": "",
+      "desiredSpend": 0,
+      "currSpend": 0
+    },
+    {
+      "id": 6,
+      "name": "",
+      "desiredSpend": 0,
+      "currSpend": 0
+    }
+  ]
 }

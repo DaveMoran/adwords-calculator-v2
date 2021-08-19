@@ -8,62 +8,42 @@ import './App.css';
 
 const App = () => {
   const [profile, setProfile] = useState({})
-  const [showApp, setShowApp] = useState(false)
+  const [accounts, setAccounts] = useState([])
   const [message, setMessage] = useState(null)
   const [messageType, setMessageType] = useState(null)
 
   useEffect(() => {
     accountService
-      .getProfile()
+      .getAll()
       .then(response => {
-        setProfile(response.data)
-        setShowApp(true)
+        setAccounts(response.data)
       })
   }, [])
 
   const addAccount = (e) => {
     e.preventDefault()
-
-    const newAccount = {
+    const accountObject = {
       id: (
-        profile.accounts.length === 0 ? 
+        accounts.length === 0 ? 
         0 : 
-        profile.accounts[profile.accounts.length - 1].id + 1),
+        accounts[accounts.length - 1].id + 1),
       name: "",
       desiredSpend: 0,
       currSpend: 0
     }
 
-    const newAccounts = profile.accounts.concat(newAccount)
-
-    const profileObject = {
-      ...profile,
-      accounts: newAccounts
-    }
-
     accountService
-      .create(profileObject)
-      .then(response => {
-        setProfile(response.data)
+      .create(accountObject)
+      .then(returnedAccount => {
+        setAccounts(accounts.concat(returnedAccount))
       })
   }
 
   const removeAccount = (id) => {
-    const newAccounts = profile.accounts.filter(account => {
-      if (account.id !== id) {
-        return account
-      }
-    })
-
-    const profileObject = {
-      ...profile,
-      accounts: newAccounts
-    }
-
     accountService
-      .create(profileObject)
+      .deleteAccount(id)
       .then(response => {
-        setProfile(response.data)
+        console.log(response.data)
       })
   }
 
@@ -96,25 +76,22 @@ const App = () => {
             </div>
           </div>
         </div>
-        {showApp && 
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <StepOne profile={profile} />
-                <StepTwo
-                  profile={profile}
-                  setMessage={setMessage}
-                  setMessageType={setMessageType}
-                  addAccount={addAccount}
-                  removeAccount={removeAccount} />
-              </div>
-              <div className="col">
-                <StepThree
-                  profile={profile} />
-              </div>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              {/* <StepOne profile={profile} /> */}
+              <StepTwo
+                accounts={accounts}
+                setMessage={setMessage}
+                setMessageType={setMessageType}
+                addAccount={addAccount}
+                removeAccount={removeAccount} />
+            </div>
+            <div className="col">
+              {/* <StepThree profile={profile} /> */}
             </div>
           </div>
-        }
+        </div>
         </main>
     </div>
   );
