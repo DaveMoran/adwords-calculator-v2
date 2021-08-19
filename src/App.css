@@ -69,3 +69,30 @@ h2 {
   margin-top: 0;
   margin-bottom: 15px;
 }
+
+p {
+  margin-bottom: 1.5em;
+}
+
+button {
+  border-radius: 0;
+  padding: 10px 30px;
+  background: #007bff;
+  color: #FFF;
+  border: 0 none;
+  font-size: 16px;
+}
+
+
+label {
+  display: inline-block;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+label input {
+  clear: both;
+  display: block;
+  margin-top: 5px;
+}
