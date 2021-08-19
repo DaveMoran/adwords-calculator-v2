@@ -22,8 +22,6 @@ const StepOne = (props) => {
       .then(response => {
         console.log(response)
       })
-
-    handleShowStepOne()
   }
 
   return (

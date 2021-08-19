@@ -57,10 +57,10 @@ const StepTwo = (props) => {
     })
 
     if (cumulativeBudget !== profile.startingBudget) {
+      setMessageType('error')
       setMessage(
         `Total desired spend (${cumulativeBudget}) does not equal budget (${profile.startingBudget})`
       )
-      setMessageType('error')
 
       setTimeout(() => {
         setMessage(null)

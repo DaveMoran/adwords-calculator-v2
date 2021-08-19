@@ -10,8 +10,8 @@ const App = () => {
   const [profile, setProfile] = useState({})
   const [showStepOne, setShowStepOne] = useState(false)
   const [showStepTwo, setShowStepTwo] = useState(false)
-  const [message, setMessage] = useState('Some error happened...')
-  const [messageType, setMessageType] = useState('error')
+  const [message, setMessage] = useState(null)
+  const [messageType, setMessageType] = useState(null)
 
   useEffect(() => {
     console.log('effect')
