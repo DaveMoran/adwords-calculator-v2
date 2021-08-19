@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import StepInput from './StepInput'
 
 const StepTwo = (props) => {
-  const { profile } = props
+  const { profile, setMessage, setMessageType } = props
   const [accounts, setAccounts] = useState(profile.accounts)
 
   const addAccount = () => {
@@ -57,7 +57,16 @@ const StepTwo = (props) => {
     })
 
     if (cumulativeBudget !== profile.startingBudget) {
-      throw new Error("Budget does not add up")
+      setMessage(
+        `Total desired spend (${cumulativeBudget}) does not equal budget (${profile.startingBudget})`
+      )
+      setMessageType('error')
+
+      setTimeout(() => {
+        setMessage(null)
+        setMessageType(null)
+      }, 5000)
+
     } else {
       const accountObject = {
         ...profile,

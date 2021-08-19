@@ -71,7 +71,10 @@ const App = () => {
             </div>
             <div className="col">
               { showStepTwo &&
-                <StepTwo profile={profile} />
+                <StepTwo 
+                  profile={profile}
+                  setMessage={setMessage}
+                  setMessageType={setMessageType} />
               }
             </div>
           </div>
