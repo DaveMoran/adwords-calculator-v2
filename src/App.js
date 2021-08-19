@@ -6,7 +6,7 @@ import axios from 'axios';
 import './App.css';
 
 const App = () => {
-  const [account, setAccount] = useState({})
+  const [profile, setProfile] = useState({})
   const [showStepOne, setShowStepOne] = useState(false)
   const [showStepTwo, setShowStepTwo] = useState(false)
 
@@ -16,7 +16,7 @@ const App = () => {
       .get('http://localhost:3001/profile')
       .then(response => {
         console.log('promise fulfilled')
-        setAccount(response.data)
+        setProfile(response.data)
         setShowStepOne(true)
         setShowStepTwo(true)
       })
@@ -58,14 +58,14 @@ const App = () => {
             <div className="col">
               { showStepOne && 
                 <StepOne 
-                  account={account}
+                  profile={profile}
                   showStepOne={showStepOne}
                   handleShowStepOne={handleShowStepOne} />
               }
             </div>
             <div className="col">
               { showStepTwo &&
-                <StepTwo account={account} />
+                <StepTwo profile={profile} />
               }
             </div>
           </div>

@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import StepInput from './StepInput'
 
 const StepOne = (props) => {
-  const { account, handleShowStepOne} = props
-  const [startingBudget, setStartingBudget] = useState(account.startingBudget)
+  const { profile, handleShowStepOne} = props
+  const [startingBudget, setStartingBudget] = useState(profile.startingBudget)
   
   const handleStartingBudget = (event) => {
     let val = parseInt(event.target.value)
@@ -13,7 +13,7 @@ const StepOne = (props) => {
 
   const handleSaveStepOne = () => {
     const accountObject = {
-      ...account,
+      ...profile,
       startingBudget: startingBudget,
     }
 

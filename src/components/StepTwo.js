@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import StepInput from './StepInput'
 
 const StepTwo = (props) => {
-  const { account } = props
-  const [ accounts, setAccounts ] = useState([])
+  const { profile } = props
+  const [accounts, setAccounts] = useState(profile.accounts)
 
   const addAccount = () => {
     const newAccount = {
@@ -27,11 +27,22 @@ const StepTwo = (props) => {
     setAccounts(newAccounts)
   }
 
-  const handleBudgetChange = (id, e) => {
+  const handleCurrSpendChange = (id, e) => {
     const newAccounts = []
     accounts.forEach(account => {
       if (account.id === id) {
-        account.budget = e.target.value
+        account.currSpend = e.target.value
+      }
+      newAccounts.push(account)
+    });
+    setAccounts(newAccounts)
+  }
+
+  const handleDesiredSpendChange = (id, e) => {
+    const newAccounts = []
+    accounts.forEach(account => {
+      if (account.id === id) {
+        account.desiredSpend = e.target.value
       }
       newAccounts.push(account)
     });
@@ -42,14 +53,14 @@ const StepTwo = (props) => {
     // Check that account values match total budget
     let cumulativeBudget = 0
     accounts.forEach(account => {
-      cumulativeBudget += parseInt(account.budget)
+      cumulativeBudget += parseInt(account.desiredSpend)
     })
 
-    if (cumulativeBudget !== 800) {
+    if (cumulativeBudget !== profile.startingBudget) {
       throw new Error("Budget does not add up")
     } else {
       const accountObject = {
-        ...account,
+        ...profile,
         accounts: accounts
       }
 
@@ -75,10 +86,17 @@ const StepTwo = (props) => {
               onChange={(e) => handleNameChange(singleAccount.id, e)} />
             <br />
             <StepInput
-              label="Budget: "
+              label="Current Spend: "
               type="number"
-              value={singleAccount.budget} 
-              onChange={(e) => handleBudgetChange(singleAccount.id, e)} />
+              value={singleAccount.currSpend}
+              onChange={(e) => handleCurrSpendChange(singleAccount.id, e)} />
+            <br />
+            <StepInput
+              label="Desired Spend: "
+              type="number"
+              value={singleAccount.desiredSpend}
+              onChange={(e) => handleDesiredSpendChange(singleAccount.id, e)} />
+            
           </li>
         ))}
         <button onClick={addAccount}>Add Account</button>
