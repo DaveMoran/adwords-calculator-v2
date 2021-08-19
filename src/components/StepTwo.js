@@ -16,6 +16,16 @@ const StepTwo = (props) => {
     setAccounts(accounts.concat(newAccount))
   }
 
+  const removeAccount = (id) => {
+    const newAccts = accounts.filter(account => {
+      if(account.id !== id) {
+        return account
+      }
+    })
+
+    setAccounts(newAccts)
+  }
+
   const handleNameChange = (id, e) => {
     const newAccounts = []
     accounts.forEach(account => {
@@ -107,6 +117,9 @@ const StepTwo = (props) => {
                 value={singleAccount.desiredSpend}
                 onChange={(e) => handleDesiredSpendChange(singleAccount.id, e)} />
               </div>
+              <button
+                className="removeAccount"
+                onClick={() => removeAccount(singleAccount.id)}>Delete</button>
           </li>
         ))}
       </ul>
