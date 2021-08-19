@@ -40,29 +40,25 @@ const StepTwo = (props) => {
 
   const handleSaveStepTwo = () => {
     // Check that account values match total budget
-
     let cumulativeBudget = 0
-
     accounts.forEach(account => {
       cumulativeBudget += parseInt(account.budget)
     })
 
-    console.log(account.startingBudget, cumulativeBudget)
-
     if (cumulativeBudget !== 800) {
       throw new Error("Budget does not add up")
-    }
+    } else {
+      const accountObject = {
+        ...account,
+        accounts: accounts
+      }
 
-    const accountObject = {
-      ...account,
-      accounts: accounts
+      axios
+        .post('http://localhost:3001/profile', accountObject)
+        .then(response => {
+          console.log(response)
+        })
     }
-
-    axios
-      .post('http://localhost:3001/profile', accountObject)
-      .then(response => {
-        console.log(response)
-      })
   }
 
   return (
