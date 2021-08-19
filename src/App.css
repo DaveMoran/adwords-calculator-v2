@@ -81,6 +81,12 @@ button {
   color: #FFF;
   border: 0 none;
   font-size: 16px;
+  cursor: pointer;
+  transition: 300ms ease all;
+}
+
+button:hover {
+  opacity: 0.8
 }
 
 
