@@ -32,19 +32,11 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>AdWords Calculator</h1>
+        <h1>AdWords Calculator v1</h1>
       </header>
       <main>
         <div className="container">
           <h2>Outline</h2>
-          <h3>v1: Import from memory</h3>
-          <ul>
-            <li>Get starting budget for the month</li>
-            <li>Add projects + budget, ensure they match the final amount</li>
-            <li>Ask for current spend of each budget</li>
-            <li>Calculate days remaining in the month</li>
-            <li>Propose new daily budgets</li>
-          </ul>
           <h3>v2: Improvements</h3>
           <ul>
             <li>Add user account</li>
