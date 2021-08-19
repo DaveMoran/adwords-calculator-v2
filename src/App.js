@@ -8,6 +8,7 @@ import './App.css';
 const App = () => {
   const [account, setAccount] = useState({})
   const [showStepOne, setShowStepOne] = useState(false)
+  const [showStepTwo, setShowStepTwo] = useState(false)
 
   useEffect(() => {
     console.log('effect')
@@ -17,6 +18,7 @@ const App = () => {
         console.log('promise fulfilled')
         setAccount(response.data)
         setShowStepOne(true)
+        setShowStepTwo(true)
       })
   }, [])
 
@@ -62,7 +64,9 @@ const App = () => {
               }
             </div>
             <div className="col">
+              { showStepTwo &&
                 <StepTwo account={account} />
+              }
             </div>
           </div>
           <div className="row">
