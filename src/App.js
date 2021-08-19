@@ -28,6 +28,32 @@ const App = () => {
       })
   }, [])
 
+  const addAccount = (e) => {
+    e.preventDefault()
+
+    const newAccount = {
+      id: (
+        profile.accounts.length === 0 ? 
+        0 : 
+        profile.accounts[profile.accounts.length - 1].id + 1),
+      name: "",
+      budget: 0
+    }
+
+    const newAccounts = profile.accounts.concat(newAccount)
+
+    const profileObject = {
+      ...profile,
+      accounts: newAccounts
+    }
+
+    accountService
+      .create(profileObject)
+      .then(response => {
+        setProfile(response.data)
+      })
+  }
+
   const handleShowStepOne = () => { setShowStepOne(!showStepOne) }
 
   return (
@@ -73,7 +99,8 @@ const App = () => {
                 <StepTwo
                   profile={profile}
                   setMessage={setMessage}
-                  setMessageType={setMessageType} />
+                  setMessageType={setMessageType}
+                  addAccount={addAccount} />
               }
             </div>
             <div className="col">

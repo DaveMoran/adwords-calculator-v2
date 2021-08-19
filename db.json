@@ -25,6 +25,11 @@
         "currSpend": 100,
         "needToSpend": 75,
         "newDaily": 75
+      },
+      {
+        "id": 3,
+        "name": "",
+        "budget": 0
       }
     ]
   }

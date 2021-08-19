@@ -3,60 +3,55 @@ import React, { useState } from 'react'
 import StepInput from './StepInput'
 
 const StepTwo = (props) => {
-  const { profile, setMessage, setMessageType } = props
-  const [accounts, setAccounts] = useState(profile.accounts)
-
-  
+  const { profile, addAccount, setMessage, setMessageType } = props  
 
   const removeAccount = (id) => {
-    const newAccts = accounts.filter(account => {
+    const newAccts = profile.accounts.filter(account => {
       if(account.id !== id) {
         return account
       }
     })
-
-    setAccounts(newAccts)
   }
 
   const handleNameChange = (id, e) => {
-    const newAccounts = []
-    accounts.forEach(account => {
-      if(account.id === id) {
-        account.name = e.target.value
-      }
-      newAccounts.push(account)
-    });
-    setAccounts(newAccounts)
+    // const newAccounts = []
+    // accounts.forEach(account => {
+    //   if(account.id === id) {
+    //     account.name = e.target.value
+    //   }
+    //   newAccounts.push(account)
+    // });
+    // setAccounts(newAccounts)
   }
 
   const handleCurrSpendChange = (id, e) => {
-    const newAccounts = []
-    accounts.forEach(account => {
-      if (account.id === id) {
-        account.currSpend = parseInt(e.target.value)
-      }
-      newAccounts.push(account)
-    });
-    setAccounts(newAccounts)
+    // const newAccounts = []
+    // accounts.forEach(account => {
+    //   if (account.id === id) {
+    //     account.currSpend = parseInt(e.target.value)
+    //   }
+    //   newAccounts.push(account)
+    // });
+    // setAccounts(newAccounts)
   }
 
   const handleDesiredSpendChange = (id, e) => {
-    const newAccounts = []
-    accounts.forEach(account => {
-      if (account.id === id) {
-        account.desiredSpend = parseInt(e.target.value)
-      }
-      newAccounts.push(account)
-    });
-    setAccounts(newAccounts)
+    // const newAccounts = []
+    // accounts.forEach(account => {
+    //   if (account.id === id) {
+    //     account.desiredSpend = parseInt(e.target.value)
+    //   }
+    //   newAccounts.push(account)
+    // });
+    // setAccounts(newAccounts)
   }
 
   const handleSaveStepTwo = () => {
     // Check that account values match total budget
     let cumulativeBudget = 0
-    accounts.forEach(account => {
-      cumulativeBudget += account.desiredSpend
-    })
+    // accounts.forEach(account => {
+    //   cumulativeBudget += account.desiredSpend
+    // })
 
     if (cumulativeBudget !== profile.startingBudget) {
 
@@ -72,8 +67,7 @@ const StepTwo = (props) => {
 
     } else {
       const accountObject = {
-        ...profile,
-        accounts: accounts
+        ...profile
       }
 
       axios
@@ -89,7 +83,7 @@ const StepTwo = (props) => {
       <h2>Step Two</h2>
       <p>List out your current accounts as well as their budget</p>
       <ul>
-        {accounts.map(singleAccount => (
+        {profile.accounts.map(singleAccount => (
           <li key={singleAccount.id}>
             <StepInput
               label="Name: "
