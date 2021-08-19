@@ -20,16 +20,9 @@
       },
       {
         "id": 2,
-        "name": "green",
-        "desiredSpend": 1000,
-        "currSpend": 100,
-        "needToSpend": 75,
-        "newDaily": 75
-      },
-      {
-        "id": 3,
         "name": "",
-        "budget": 0
+        "desiredSpend": 0,
+        "currSpend": 0
       }
     ]
   }

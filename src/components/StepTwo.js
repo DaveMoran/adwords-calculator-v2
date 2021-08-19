@@ -3,15 +3,13 @@ import React, { useState } from 'react'
 import StepInput from './StepInput'
 
 const StepTwo = (props) => {
-  const { profile, addAccount, setMessage, setMessageType } = props  
-
-  const removeAccount = (id) => {
-    const newAccts = profile.accounts.filter(account => {
-      if(account.id !== id) {
-        return account
-      }
-    })
-  }
+  const { 
+    profile, 
+    addAccount, 
+    removeAccount,
+    setMessage, 
+    setMessageType 
+  } = props  
 
   const handleNameChange = (id, e) => {
     // const newAccounts = []

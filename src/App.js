@@ -30,10 +30,30 @@ const App = () => {
         0 : 
         profile.accounts[profile.accounts.length - 1].id + 1),
       name: "",
-      budget: 0
+      desiredSpend: 0,
+      currSpend: 0
     }
 
     const newAccounts = profile.accounts.concat(newAccount)
+
+    const profileObject = {
+      ...profile,
+      accounts: newAccounts
+    }
+
+    accountService
+      .create(profileObject)
+      .then(response => {
+        setProfile(response.data)
+      })
+  }
+
+  const removeAccount = (id) => {
+    const newAccounts = profile.accounts.filter(account => {
+      if (account.id !== id) {
+        return account
+      }
+    })
 
     const profileObject = {
       ...profile,
@@ -85,7 +105,8 @@ const App = () => {
                   profile={profile}
                   setMessage={setMessage}
                   setMessageType={setMessageType}
-                  addAccount={addAccount} />
+                  addAccount={addAccount}
+                  removeAccount={removeAccount} />
               </div>
               <div className="col">
                 <StepThree
