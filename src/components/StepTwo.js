@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import StepInput from './StepInput'
+import accountService from '../services/accounts'
 
 const StepTwo = (props) => {
   const { 
-    accounts, 
-    addAccount, 
+    accounts,  
     removeAccount,
-    updateAllAccounts
+    setAccounts
   } = props
 
   const [accountValues, setAccountValues] = useState(accounts)
@@ -36,6 +36,39 @@ const StepTwo = (props) => {
       newAccounts.push(account)
     });
     setAccountValues(newAccounts)
+  }
+
+  const updateAllAccounts = (newAccounts) => {
+    const promises = []
+    newAccounts.forEach(account => {
+      promises.push(
+        accountService.update(account.id, account)
+      )
+    })
+
+    Promise.all(promises).then(() => {
+      setAccountValues(accounts)
+    })
+  }
+
+  const addAccount = (e) => {
+    e.preventDefault()
+    const accountObject = {
+      id: (
+        accounts.length === 0 ?
+          0 :
+          accounts[accounts.length - 1].id + 1),
+      name: "",
+      desiredSpend: 0,
+      currSpend: 0
+    }
+
+    accountService
+      .create(accountObject)
+      .then(response => {
+        setAccountValues(accounts.concat(response.data))
+        setAccounts(accounts.concat(response.data))
+      })
   }
 
   return (

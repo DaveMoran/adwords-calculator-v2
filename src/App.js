@@ -29,25 +29,6 @@ const App = () => {
       })
   }, [])
 
-  const addAccount = (e) => {
-    e.preventDefault()
-    const accountObject = {
-      id: (
-        accounts.length === 0 ? 
-        0 : 
-        accounts[accounts.length - 1].id + 1),
-      name: "",
-      desiredSpend: 0,
-      currSpend: 0
-    }
-
-    accountService
-      .create(accountObject)
-      .then(response => {
-        setAccounts(accounts.concat(response.data))
-      })
-  }
-
   const removeAccount = (id) => {
     accountService
       .deleteAccount(id)
@@ -66,16 +47,6 @@ const App = () => {
       .then(response => {
         setProfile(response.data)
       })
-  }
-
-  const updateAllAccounts = (newAccounts) => {
-    newAccounts.forEach(account => {
-      accountService
-        .update(account.id, account)
-        .then(response => {
-          console.log(response)
-        })
-    })
   }
 
   const caluculateBudgets = () => {
@@ -165,11 +136,10 @@ const App = () => {
                   saveBudget={saveBudget} />
                 <StepTwo
                   accounts={accounts}
+                  setAccounts={setAccounts}
                   setMessage={setMessage}
                   setMessageType={setMessageType}
-                  addAccount={addAccount}
-                  removeAccount={removeAccount}
-                  updateAllAccounts={updateAllAccounts} />
+                  removeAccount={removeAccount} />
               </div>
               <div className="col">
                 <StepThree 
