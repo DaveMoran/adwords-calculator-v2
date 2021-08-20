@@ -26,6 +26,18 @@ app.get('/api/accounts/', (request, response) => {
   response.json(accounts)
 })
 
+app.get('/api/accounts/:id', (request, response) => {
+  const id = Number(request.params.id)
+  const account = accounts.find(account => account.id === id)
+
+  if(account) {
+    response.json(account)
+  } else {
+    response.status(404).end()
+  }
+  
+})
+
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
