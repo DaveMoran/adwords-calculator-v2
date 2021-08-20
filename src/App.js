@@ -79,7 +79,52 @@ const App = () => {
   }
 
   const caluculateBudgets = () => {
+ // get day of the month
+    let currDate = new Date(Date.now())
+    let currDay = currDate.getDate()
+    let currMonth = currDate.getMonth()
+    let daysRemaining = 0
+    
+    // cauclate days remaining in month
+    switch(currMonth) {
+      case 0:
+      case 2:
+      case 4:
+      case 6:
+      case 7:
+      case 9:
+      case 11:
+        daysRemaining = 31 - currDay;
+        break;
+      case 1:
+        daysRemaining = 28 - currDay;
+        break;
+      default:
+        daysRemaining = 30 - currDay;
+    }
 
+    const newAccts = []
+    accounts.forEach(account => {
+      // look at remaining amt for existing budgets, divide by remaining days
+      let newDaily = account.desiredSpend - account.currSpend
+      if (newDaily < 0) {
+        // If number is negative (overspend), set budget to 0
+        account.newDaily = 0
+      } else {
+        // Else, set new number
+        account.newDaily = Math.floor((newDaily / daysRemaining) * 100) / 100
+      }
+
+      newAccts.push(account)
+    })
+
+    newAccts.forEach(account => {
+      accountService
+        .update(account.id, account)
+        .then(response => {
+          console.log(response)
+        })
+    })
   }
 
   return (

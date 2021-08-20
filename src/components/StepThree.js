@@ -1,5 +1,4 @@
-import axios from 'axios'
-import React, { useState } from 'react'
+import React from 'react'
 
 const StepThree = (props) => {
   const { accounts, caluculateBudgets } = props
@@ -10,10 +9,10 @@ const StepThree = (props) => {
       <p>Final Calculations</p>
       <button onClick={caluculateBudgets}>Calculate</button>
       <ul>  
-        {accounts.map(singleAccount => (
-          <li key={singleAccount.id}>
-            <p><strong>Account:</strong> {singleAccount.name}<br />
-            <strong>New Budget:</strong> {singleAccount.newDaily !== null ? singleAccount.newDaily : ''}</p>
+        {accounts.map(account => (
+          <li key={account.id}>
+            <p><strong>Account:</strong> {account.name}<br />
+            <strong>New Budget:</strong> {account.newDaily !== null ? account.newDaily : ''}</p>
           </li>
         ))}
       </ul>
