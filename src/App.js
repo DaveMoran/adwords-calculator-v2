@@ -78,6 +78,10 @@ const App = () => {
     })
   }
 
+  const caluculateBudgets = () => {
+
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -124,8 +128,8 @@ const App = () => {
               </div>
               <div className="col">
                 <StepThree 
-                  profile={profile}
-                  accounts={accounts} />
+                  accounts={accounts}
+                  caluculateBudgets={caluculateBudgets} />
               </div>
             </div>
           </div>
