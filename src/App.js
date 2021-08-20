@@ -58,9 +58,7 @@ const App = () => {
   }
 
   const saveBudget = (newBudget) => {
-    const profileObj = {
-      "startingBudget": newBudget 
-    }
+    const profileObj = { "startingBudget": newBudget }
     profileService
       .updateAll(profileObj)
       .then(response => {
@@ -92,7 +90,7 @@ const App = () => {
         <hr />
         <div id="notificationBar" className="container">
           <div className="row">
-            <div class="col">
+            <div className="col">
               <Notification message={message} messageType={messageType} />
             </div>
           </div>
