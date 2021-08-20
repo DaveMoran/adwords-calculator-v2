@@ -47,16 +47,30 @@ app.delete('/api/accounts/:id', (request, response) => {
   response.status(204).end()
 })
 
-app.post('/api/accounts', (request, response) => {
+const generateId = () => {
   const maxId = accounts.length > 0
-    ?  Math.max(...accounts.map(n => n.id))
+    ? Math.max(...accounts.map(n => n.id))
     : 0
+  return maxId + 1
+}
 
-  const account = request.body
-  account.id = maxId + 1
+app.post('/api/accounts', (request, response) => {
+  const body = request.body
+
+  if(!body.name) {
+    return response.status(400).json({
+      error: 'Name missing from body'
+    })
+  }
+
+  const account = {
+    name: body.name,
+    currSpend: body.currSpend || 0,
+    desiredSpend: body.desiredSpend || 0,
+    id: generateId()
+  }
 
   accounts = accounts.concat(account)
-  
   response.json(account)
 })
 
