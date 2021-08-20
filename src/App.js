@@ -29,17 +29,6 @@ const App = () => {
       })
   }, [])
 
-  const removeAccount = (id) => {
-    accountService
-      .deleteAccount(id)
-      .then(response => {
-        const filteredAccounts = accounts.filter(account => {
-          if (account.id !== id) { return account }
-        })
-        setAccounts(filteredAccounts)
-      })
-  }
-
   const saveBudget = (newBudget) => {
     const profileObj = { "startingBudget": newBudget }
     profileService
@@ -138,8 +127,7 @@ const App = () => {
                   accounts={accounts}
                   setAccounts={setAccounts}
                   setMessage={setMessage}
-                  setMessageType={setMessageType}
-                  removeAccount={removeAccount} />
+                  setMessageType={setMessageType}/>
               </div>
               <div className="col">
                 <StepThree 

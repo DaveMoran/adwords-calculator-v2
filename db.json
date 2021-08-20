@@ -16,18 +16,6 @@
       "desiredSpend": 2500,
       "currSpend": 1985,
       "newDaily": 46.81
-    },
-    {
-      "id": 5,
-      "name": "",
-      "desiredSpend": 0,
-      "currSpend": 0
-    },
-    {
-      "id": 6,
-      "name": "",
-      "desiredSpend": 0,
-      "currSpend": 0
     }
   ]
 }

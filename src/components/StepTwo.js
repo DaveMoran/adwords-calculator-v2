@@ -3,12 +3,7 @@ import StepInput from './StepInput'
 import accountService from '../services/accounts'
 
 const StepTwo = (props) => {
-  const { 
-    accounts,  
-    removeAccount,
-    setAccounts
-  } = props
-
+  const { accounts, setAccounts } = props
   const [accountValues, setAccountValues] = useState(accounts)
 
   const handleNameChange = (id, e) => {
@@ -68,6 +63,18 @@ const StepTwo = (props) => {
       .then(response => {
         setAccountValues(accounts.concat(response.data))
         setAccounts(accounts.concat(response.data))
+      })
+  }
+
+  const removeAccount = (id) => {
+    accountService
+      .deleteAccount(id)
+      .then(() => {
+        const filteredAccounts = accounts.filter(account => {
+          if (account.id !== id) { return account }
+        })
+        setAccountValues(filteredAccounts)
+        setAccounts(filteredAccounts)
       })
   }
 
