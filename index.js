@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 let accounts = [
   {
     "id": 3,
@@ -22,7 +24,7 @@ app.get('/', (request, response) => {
   response.send('<h1>Hello World</h1>')
 })
 
-app.get('/api/accounts/', (request, response) => {
+app.get('/api/accounts', (request, response) => {
   response.json(accounts)
 })
 
@@ -43,6 +45,12 @@ app.delete('/api/accounts/:id', (request, response) => {
   accounts = accounts.filter(account => account.id !== id)
 
   response.status(204).end()
+})
+
+app.post('/api/accounts', (request, response) => {
+  const account = request.body
+  console.log(account)
+  response.json(account)
 })
 
 const PORT = 3001
