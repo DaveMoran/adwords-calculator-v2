@@ -4,6 +4,8 @@ const cors = require('cors')
 
 app.use(express.json())
 
+app.use(express.static('build'))
+
 const requestLogger = (request, response, next) => {
   console.log('Method:',  request.method)
   console.log('Path:',    request.ppath)
