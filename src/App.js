@@ -4,6 +4,7 @@ import StepTwo from './components/StepTwo';
 import StepThree from './components/StepThree';
 import Notification from './components/Notification';
 import accountService from './services/accounts'
+import profileService from './services/profile'
 import './App.css';
 
 const App = () => {
@@ -17,6 +18,12 @@ const App = () => {
       .getAll()
       .then(response => {
         setAccounts(response.data)
+      })
+
+    profileService
+      .getAll()
+      .then(response => {
+        setProfile(response.data)
       })
   }, [])
 
@@ -82,7 +89,7 @@ const App = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              {/* <StepOne profile={profile} /> */}
+              <StepOne profile={profile} />
               <StepTwo
                 accounts={accounts}
                 setMessage={setMessage}
@@ -91,7 +98,9 @@ const App = () => {
                 removeAccount={removeAccount} />
             </div>
             <div className="col">
-              {/* <StepThree profile={profile} /> */}
+              <StepThree 
+                profile={profile}
+                accounts={accounts} />
             </div>
           </div>
         </div>

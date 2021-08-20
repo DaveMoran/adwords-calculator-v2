@@ -2,8 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 
 const StepThree = (props) => {
-  const { profile } = props
-  const [accounts, setAccounts] = useState(profile.accounts)
+  const { profile, accounts } = props
 
   const determineNewBudgets = () => {
     // get day of the month
