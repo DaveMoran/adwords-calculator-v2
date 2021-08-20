@@ -48,8 +48,15 @@ app.delete('/api/accounts/:id', (request, response) => {
 })
 
 app.post('/api/accounts', (request, response) => {
+  const maxId = accounts.length > 0
+    ?  Math.max(...accounts.map(n => n.id))
+    : 0
+
   const account = request.body
-  console.log(account)
+  account.id = maxId + 1
+
+  accounts = accounts.concat(account)
+  
   response.json(account)
 })
 
