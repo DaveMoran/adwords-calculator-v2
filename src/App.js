@@ -69,11 +69,13 @@ const App = () => {
   }
 
   const updateAllAccounts = (newAccounts) => {
-    accountService
-      .updateAll(newAccounts)
-      .then(response => {
-        console.log(response)
-      })
+    newAccounts.forEach(account => {
+      accountService
+        .update(account.id, account)
+        .then(response => {
+          console.log(response)
+        })
+    })
   }
 
   return (

@@ -71,7 +71,7 @@ const StepTwo = (props) => {
       </ul>
       <div className="button-group">
         <button onClick={addAccount}>Add Account</button>
-        <button onClick={updateAllAccounts}>Save</button>
+        <button onClick={() => updateAllAccounts(accountValues)}>Save</button>
       </div>
     </div>
   )

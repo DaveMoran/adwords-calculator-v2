@@ -5,15 +5,15 @@
   "accounts": [
     {
       "id": 3,
-      "name": "",
-      "desiredSpend": 0,
-      "currSpend": 0
+      "name": "red",
+      "desiredSpend": 840,
+      "currSpend": 998
     },
     {
       "id": 4,
-      "name": "",
-      "desiredSpend": 0,
-      "currSpend": 0
+      "name": "blue",
+      "desiredSpend": 1500,
+      "currSpend": 200
     }
   ]
 }
