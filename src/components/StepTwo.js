@@ -15,34 +15,28 @@ const StepTwo = (props) => {
   const handleNameChange = (id, e) => {
     const newAccounts = []
     accountValues.forEach(account => {
-      if(account.id === id) {
-        account.name = e.target.value
-      }
+      if(account.id === id) { account.name = e.target.value }
       newAccounts.push(account)
     });
     setAccountValues(newAccounts)
   }
 
   const handleCurrSpendChange = (id, e) => {
-    // const newAccounts = []
-    // accounts.forEach(account => {
-    //   if (account.id === id) {
-    //     account.currSpend = parseInt(e.target.value)
-    //   }
-    //   newAccounts.push(account)
-    // });
-    // setAccounts(newAccounts)
+    const newAccounts = []
+    accountValues.forEach(account => {
+      if (account.id === id) { account.currSpend = parseInt(e.target.value) }
+      newAccounts.push(account)
+    });
+    setAccountValues(newAccounts)
   }
 
   const handleDesiredSpendChange = (id, e) => {
-    // const newAccounts = []
-    // accounts.forEach(account => {
-    //   if (account.id === id) {
-    //     account.desiredSpend = parseInt(e.target.value)
-    //   }
-    //   newAccounts.push(account)
-    // });
-    // setAccounts(newAccounts)
+    const newAccounts = []
+    accountValues.forEach(account => {
+      if (account.id === id) { account.desiredSpend = parseInt(e.target.value) }
+      newAccounts.push(account)
+    });
+    setAccountValues(newAccounts)
   }
 
   const handleSaveStepTwo = () => {
@@ -110,7 +104,7 @@ const StepTwo = (props) => {
       </ul>
       <div className="button-group">
         <button onClick={addAccount}>Add Account</button>
-        <button onClick={handleSaveStepTwo}>Next</button>
+        <button onClick={handleSaveStepTwo}>Save</button>
       </div>
     </div>
   )
