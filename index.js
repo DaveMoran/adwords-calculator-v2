@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 const requestLogger = (request, response, next) => {
   console.log('Method:',  request.method)
   console.log('Path:',    request.ppath)
@@ -9,7 +11,6 @@ const requestLogger = (request, response, next) => {
   next()
 }
 
-app.use(express.json())
 app.use(requestLogger)
 
 let accounts = [
