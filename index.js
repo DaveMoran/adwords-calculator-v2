@@ -29,6 +29,10 @@ let accounts = [
   }
 ]
 
+let profile = {
+  "startingBudget": 5500
+}
+
 app.get('/', (request, response) => {
   response.send('<h1>Hello World</h1>')
 })
@@ -81,6 +85,26 @@ app.post('/api/accounts', (request, response) => {
 
   accounts = accounts.concat(account)
   response.json(account)
+})
+
+app.get('/api/profile', (request, response) => {
+  response.json(profile)
+})
+
+app.patch('/api/profile', (request, response) => {
+  const body = request.body
+
+  if (!body.startingBudget) {
+    return response.status(400).json({
+      error: 'Starting Budget missing from body'
+    })
+  }
+
+  profile = {
+    "startingBudget": body.startingBudget
+  }
+
+  response.json(profile)
 })
 
 const unknownEndpoint = (request, response) => {
