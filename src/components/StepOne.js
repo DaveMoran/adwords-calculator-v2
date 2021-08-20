@@ -1,11 +1,11 @@
-import axios from 'axios'
 import React, { useState } from 'react'
 import StepInput from './StepInput'
 
 const StepOne = (props) => {
+  
   const { profile, saveBudget} = props
   const [startingBudget, setStartingBudget] = useState(profile.startingBudget)
-  
+
   const handleStartingBudget = (event) => {
     let val = parseInt(event.target.value)
     if (val ) { setStartingBudget(val) }
@@ -18,7 +18,7 @@ const StepOne = (props) => {
         label="What's your starting budget?"
         inputID="startingBudget"
         type="number"
-        value={startingBudget ? startingBudget : 0}
+        value={startingBudget}
         onChange={handleStartingBudget} />
       <br />
       <button id="saveStepOne" onClick={() => saveBudget(startingBudget)}>Save</button>

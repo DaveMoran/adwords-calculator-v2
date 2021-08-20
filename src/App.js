@@ -12,6 +12,7 @@ const App = () => {
   const [accounts, setAccounts] = useState([])
   const [message, setMessage] = useState(null)
   const [messageType, setMessageType] = useState(null)
+  const [showApp, setShowApp] = useState(false)
 
   useEffect(() => {
     accountService
@@ -24,6 +25,7 @@ const App = () => {
       .getAll()
       .then(response => {
         setProfile(response.data)
+        setShowApp(true)
       })
   }, [])
 
@@ -71,51 +73,53 @@ const App = () => {
       <header className="App-header">
         <h1>AdWords Calculator v1</h1>
       </header>
-      <main>
-        <div className="container">
-          <h2>Outline</h2>
-          <h3>v2: Improvements</h3>
-          <ul>
-            <li>Host on Heroku</li>
-            <li>Add user account</li>
-            <li>Save projects per user account</li>
-          </ul>
-          <h3>v3: 3rd party</h3>
-          <ul>
-            <li>Add connection to google adwords</li>
-            <li>Add sync button to pull values and calculate new budgets</li>
-            <li>Send new budgets to adwords, save</li>
-          </ul>
-        </div>
-        <hr />
-        <div id="notificationBar" className="container">
-          <div className="row">
-            <div className="col">
-              <Notification message={message} messageType={messageType} />
+      { showApp && 
+        <main>
+          <div className="container">
+            <h2>Outline</h2>
+            <h3>v2: Improvements</h3>
+            <ul>
+              <li>Host on Heroku</li>
+              <li>Add user account</li>
+              <li>Save projects per user account</li>
+            </ul>
+            <h3>v3: 3rd party</h3>
+            <ul>
+              <li>Add connection to google adwords</li>
+              <li>Add sync button to pull values and calculate new budgets</li>
+              <li>Send new budgets to adwords, save</li>
+            </ul>
+          </div>
+          <hr />
+          <div id="notificationBar" className="container">
+            <div className="row">
+              <div className="col">
+                <Notification message={message} messageType={messageType} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <StepOne 
-                profile={profile}
-                saveBudget={saveBudget} />
-              <StepTwo
-                accounts={accounts}
-                setMessage={setMessage}
-                setMessageType={setMessageType}
-                addAccount={addAccount}
-                removeAccount={removeAccount} />
-            </div>
-            <div className="col">
-              <StepThree 
-                profile={profile}
-                accounts={accounts} />
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <StepOne 
+                  profile={profile}
+                  saveBudget={saveBudget} />
+                <StepTwo
+                  accounts={accounts}
+                  setMessage={setMessage}
+                  setMessageType={setMessageType}
+                  addAccount={addAccount}
+                  removeAccount={removeAccount} />
+              </div>
+              <div className="col">
+                <StepThree 
+                  profile={profile}
+                  accounts={accounts} />
+              </div>
             </div>
           </div>
-        </div>
         </main>
+      }
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useState } from 'react'
 import StepInput from './StepInput'
 
@@ -9,17 +8,19 @@ const StepTwo = (props) => {
     removeAccount,
     setMessage, 
     setMessageType 
-  } = props  
+  } = props
+
+  const [accountValues, setAccountValues] = useState(accounts)
 
   const handleNameChange = (id, e) => {
-    // const newAccounts = []
-    // accounts.forEach(account => {
-    //   if(account.id === id) {
-    //     account.name = e.target.value
-    //   }
-    //   newAccounts.push(account)
-    // });
-    // setAccounts(newAccounts)
+    const newAccounts = []
+    accountValues.forEach(account => {
+      if(account.id === id) {
+        account.name = e.target.value
+      }
+      newAccounts.push(account)
+    });
+    setAccountValues(newAccounts)
   }
 
   const handleCurrSpendChange = (id, e) => {
@@ -81,7 +82,7 @@ const StepTwo = (props) => {
       <h2>Step Two</h2>
       <p>List out your current accounts as well as their budget</p>
       <ul>
-        {accounts.map(singleAccount => (
+        {accountValues.map(singleAccount => (
           <li key={singleAccount.id}>
             <StepInput
               label="Name: "
