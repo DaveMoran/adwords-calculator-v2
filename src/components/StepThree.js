@@ -1,13 +1,12 @@
 import React from 'react'
 
 const StepThree = (props) => {
-  const { accounts, caluculateBudgets } = props
+  const { accounts } = props
 
   return (
     <div id="stepThree" className="step">
       <h2>Step 3</h2>
       <p>Final Calculations</p>
-      <button onClick={caluculateBudgets}>Calculate</button>
       <ul>  
         {accounts.map(account => (
           <li key={account.id}>

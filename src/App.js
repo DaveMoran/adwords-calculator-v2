@@ -38,7 +38,7 @@ const App = () => {
       })
   }
 
-  const caluculateBudgets = () => {
+  const calculateBudgets = () => {
  // get day of the month
     let currDate = new Date(Date.now())
     let currDay = currDate.getDate()
@@ -127,12 +127,12 @@ const App = () => {
                   accounts={accounts}
                   setAccounts={setAccounts}
                   setMessage={setMessage}
-                  setMessageType={setMessageType}/>
+                  setMessageType={setMessageType}
+                  calculateBudgets={calculateBudgets} />
               </div>
               <div className="col">
                 <StepThree 
-                  accounts={accounts}
-                  caluculateBudgets={caluculateBudgets} />
+                  accounts={accounts}/>
               </div>
             </div>
           </div>

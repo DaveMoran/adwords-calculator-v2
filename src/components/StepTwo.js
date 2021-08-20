@@ -3,7 +3,7 @@ import StepInput from './StepInput'
 import accountService from '../services/accounts'
 
 const StepTwo = (props) => {
-  const { accounts, setAccounts } = props
+  const { accounts, setAccounts, calculateBudgets } = props
   const [accountValues, setAccountValues] = useState(accounts)
 
   const handleNameChange = (id, e) => {
@@ -41,9 +41,9 @@ const StepTwo = (props) => {
       )
     })
 
-    Promise.all(promises).then(() => {
-      setAccountValues(accounts)
-    })
+    Promise.all(promises).then(() => { setAccountValues(accounts) })
+
+    calculateBudgets()
   }
 
   const addAccount = (e) => {
@@ -111,7 +111,7 @@ const StepTwo = (props) => {
       </ul>
       <div className="button-group">
         <button onClick={addAccount}>Add Account</button>
-        <button onClick={() => updateAllAccounts(accountValues)}>Save</button>
+        <button onClick={() => updateAllAccounts(accountValues)}>Calculate</button>
       </div>
     </div>
   )

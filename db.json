@@ -6,16 +6,16 @@
     {
       "id": 3,
       "name": "red",
-      "desiredSpend": 1200,
+      "desiredSpend": 2000,
       "currSpend": 998,
-      "newDaily": 18.36
+      "newDaily": 91.09
     },
     {
       "id": 4,
       "name": "blue",
-      "desiredSpend": 2500,
+      "desiredSpend": 2000,
       "currSpend": 1985,
-      "newDaily": 46.81
+      "newDaily": 1.36
     }
   ]
 }
