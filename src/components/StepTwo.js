@@ -6,8 +6,7 @@ const StepTwo = (props) => {
     accounts, 
     addAccount, 
     removeAccount,
-    setMessage, 
-    setMessageType 
+    updateAllAccounts
   } = props
 
   const [accountValues, setAccountValues] = useState(accounts)
@@ -37,38 +36,6 @@ const StepTwo = (props) => {
       newAccounts.push(account)
     });
     setAccountValues(newAccounts)
-  }
-
-  const handleSaveStepTwo = () => {
-    // Check that account values match total budget
-    let cumulativeBudget = 0
-    // accounts.forEach(account => {
-    //   cumulativeBudget += account.desiredSpend
-    // })
-
-    // if (cumulativeBudget !== profile.startingBudget) {
-
-    //   setMessageType('error')
-    //   setMessage(
-    //     `Total desired spend (${cumulativeBudget}) does not equal budget (${profile.startingBudget})`
-    //   )
-
-    //   setTimeout(() => {
-    //     setMessage(null)
-    //     setMessageType(null)
-    //   }, 5000)
-
-    // } else {
-    //   const accountObject = {
-    //     ...profile
-    //   }
-
-    //   axios
-    //     .post('http://localhost:3001/profile', accountObject)
-    //     .then(response => {
-    //       console.log(response)
-    //     })
-    // }
   }
 
   return (
@@ -104,7 +71,7 @@ const StepTwo = (props) => {
       </ul>
       <div className="button-group">
         <button onClick={addAccount}>Add Account</button>
-        <button onClick={handleSaveStepTwo}>Save</button>
+        <button onClick={updateAllAccounts}>Save</button>
       </div>
     </div>
   )

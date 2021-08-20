@@ -68,6 +68,14 @@ const App = () => {
       })
   }
 
+  const updateAllAccounts = (newAccounts) => {
+    accountService
+      .updateAll(newAccounts)
+      .then(response => {
+        console.log(response)
+      })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -109,7 +117,8 @@ const App = () => {
                   setMessage={setMessage}
                   setMessageType={setMessageType}
                   addAccount={addAccount}
-                  removeAccount={removeAccount} />
+                  removeAccount={removeAccount}
+                  updateAllAccounts={updateAllAccounts} />
               </div>
               <div className="col">
                 <StepThree 

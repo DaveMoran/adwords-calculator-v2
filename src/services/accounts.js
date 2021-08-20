@@ -17,9 +17,14 @@ const deleteAccount = (id) => {
   return axios.delete(`${baseUrl}/${id}`)
 }
 
+const updateAll = newObject => {
+  return axios.patch(baseUrl, newObject)
+}
+
 export default {
   getAll: getAll,
   create: create,
   update: update,
-  deleteAccount: deleteAccount
+  deleteAccount: deleteAccount,
+  updateAll: updateAll
 }
