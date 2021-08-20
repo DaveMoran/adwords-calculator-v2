@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/accounts'
+const baseUrl = 'http://localhost:3001/api/accounts'
 
 const getAll = () => {
   return axios.get(baseUrl)
@@ -22,9 +22,9 @@ const updateAll = newObject => {
 }
 
 export default {
-  getAll: getAll,
-  create: create,
-  update: update,
-  deleteAccount: deleteAccount,
-  updateAll: updateAll
+  getAll,
+  create,
+  update,
+  deleteAccount,
+  updateAll
 }

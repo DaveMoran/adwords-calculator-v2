@@ -9,7 +9,4 @@ const updateAll = (newData) => {
   return axios.patch(baseUrl, newData)
 }
 
-export default {
-  getAll: getAll,
-  updateAll: updateAll
-}
+export default { getAll, updateAll }
