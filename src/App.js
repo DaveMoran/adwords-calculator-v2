@@ -78,13 +78,14 @@ const App = () => {
       newAccts.push(account)
     })
 
+    const promises = []
     newAccts.forEach(account => {
-      accountService
-        .update(account.id, account)
-        .then(response => {
-          console.log(response)
-        })
+      promises.push(
+        accountService.update(account.id, account)
+      )
     })
+
+    Promise.all(promises).then(() => { setAccounts(newAccts) })
   }
 
   return (
