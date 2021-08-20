@@ -57,6 +57,17 @@ const App = () => {
       })
   }
 
+  const saveBudget = (newBudget) => {
+    const profileObj = {
+      "startingBudget": newBudget 
+    }
+    profileService
+      .updateAll(profileObj)
+      .then(response => {
+        setProfile(response.data)
+      })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -89,7 +100,9 @@ const App = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <StepOne profile={profile} />
+              <StepOne 
+                profile={profile}
+                saveBudget={saveBudget} />
               <StepTwo
                 accounts={accounts}
                 setMessage={setMessage}

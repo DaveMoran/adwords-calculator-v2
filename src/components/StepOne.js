@@ -3,25 +3,12 @@ import React, { useState } from 'react'
 import StepInput from './StepInput'
 
 const StepOne = (props) => {
-  const { profile, handleShowStepOne} = props
+  const { profile, saveBudget} = props
   const [startingBudget, setStartingBudget] = useState(profile.startingBudget)
   
   const handleStartingBudget = (event) => {
     let val = parseInt(event.target.value)
     if (val ) { setStartingBudget(val) }
-  }
-
-  const handleSaveStepOne = () => {
-    const accountObject = {
-      ...profile,
-      startingBudget: startingBudget,
-    }
-
-    axios
-      .post('http://localhost:3001/profile', accountObject)
-      .then(response => {
-        console.log(response)
-      })
   }
 
   return (
@@ -31,10 +18,10 @@ const StepOne = (props) => {
         label="What's your starting budget?"
         inputID="startingBudget"
         type="number"
-        value={startingBudget}
+        value={startingBudget ? startingBudget : 0}
         onChange={handleStartingBudget} />
       <br />
-      <button id="saveStepOne" onClick={handleSaveStepOne}>Next</button>
+      <button id="saveStepOne" onClick={() => saveBudget(startingBudget)}>Save</button>
     </div>
   )
 }
