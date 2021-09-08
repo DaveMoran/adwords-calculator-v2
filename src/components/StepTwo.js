@@ -72,8 +72,8 @@ const StepTwo = (props) => {
 
   return (
     <div className="step" id="stepTwo">
-      <h2>Step Two</h2>
-      <p>List out your current accounts as well as their budget</p>
+      <h2>Instructions</h2>
+      <p>List out your current accounts, their current spend, and their desired spend. Once all accounts are in place, click on 'Calculate' and the app will generate new daily spends so that your accounts can better reach their allocated budgets.</p>
       <ul>
         {accountValues.map(singleAccount => (
           <li key={singleAccount.id}>
