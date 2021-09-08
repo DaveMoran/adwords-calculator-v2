@@ -8,21 +8,27 @@ if (process.argv.length < 3) {
 const password = process.argv[2]
 
 const url = 
-  `mongodb+srv://adwords-calc:kX0cTxy5rEdLt2Io@cluster0.dl6og.mongodb.net/adwords-calc?retryWrites=true`
+  `mongodb+srv://adwords-calc:${password}@cluster0.dl6og.mongodb.net/adwords-calc?retryWrites=true`
 
 mongoose.connect(url)
 
-const profileSchema = new mongoose.Schema({
-  startingBudget: Number
+const accountSchema = new mongoose.Schema({
+  name: String,
+  desiredSpend: Number,
+  currSpend: Number,
+  newDaily: Number
 })
 
-const Profile = mongoose.model('Profile', profileSchema)
+const Account = mongoose.model('Account', accountSchema)
 
-const profile = new Profile({
-  startingBudget: 3000
+const account = new Account({
+  name: "Mongo",
+  desiredSpend: 3000,
+  currSpend: 1873,
+  newDaily: 0
 })
 
-profile.save().then(result => {
-  console.log('profile saved!')
+account.save().then(result => {
+  console.log('account saved!')
   mongoose.connection.close()
 })
