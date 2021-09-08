@@ -54,6 +54,14 @@ app.post('/api/accounts', (request, response) => {
   })
 })
 
+app.put('/api/accounts/:id', (request, response) => {
+  const body = request.body
+  
+  Account.findByIdAndUpdate(request.params.id, body).then(account => {
+    response.json(account)
+  })
+})
+
 const unknownEndpoint = (request, response) => {
   response.status(404).send(({ error: 'Unknown endpoint.'}))
 }
