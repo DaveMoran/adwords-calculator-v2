@@ -48,7 +48,7 @@ const StepTwo = (props) => {
 
   const addAccount = (e) => {
     e.preventDefault()
-    const accountObject = { name: "" }
+    const accountObject = { name: "Account" }
 
     accountService
       .create(accountObject)
