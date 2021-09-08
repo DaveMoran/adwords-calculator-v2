@@ -28,7 +28,14 @@ const account = new Account({
   newDaily: 0
 })
 
-account.save().then(result => {
-  console.log('account saved!')
+// account.save().then(result => {
+//   console.log('account saved!')
+//   mongoose.connection.close()
+// })
+
+Account.find({}).then(result => {
+  result.forEach(account => {
+    console.log(account)
+  })
   mongoose.connection.close()
 })
