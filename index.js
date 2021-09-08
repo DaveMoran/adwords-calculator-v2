@@ -23,10 +23,16 @@ app.get('/api/accounts', (request, response) => {
   })
 })
 
-app.get('/api/accounts/:id', (request, response) => {
-  Account.findById(request.params.id).then(account => {
-    response.json(account)
-  })
+app.get('/api/accounts/:id', (request, response, next) => {
+  Account.findById(request.params.id)
+    .then(account => {
+      if (account) { 
+        response.json(account) 
+      } else { 
+        response.status(404).end() 
+      }
+    })
+    .catch(error => next(error))
 })
 
 app.delete('/api/accounts/:id', (request, response) => {
@@ -65,6 +71,19 @@ app.put('/api/accounts/:id', (request, response) => {
 const unknownEndpoint = (request, response) => {
   response.status(404).send(({ error: 'Unknown endpoint.'}))
 }
+
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message)
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  }
+
+  next(error)
+}
+
+// this has to be the last loaded middleware.
+app.use(errorHandler)
 
 app.use(unknownEndpoint)
 
