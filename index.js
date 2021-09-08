@@ -3,10 +3,6 @@ const express = require('express')
 const app = express()
 const Account = require('./models/account')
 
-app.use(express.json())
-
-app.use(express.static('build'))
-
 const requestLogger = (request, response, next) => {
   console.log('Method:',  request.method)
   console.log('Path:',    request.ppath)
@@ -15,6 +11,8 @@ const requestLogger = (request, response, next) => {
   next()
 }
 
+app.use(express.static('build'))
+app.use(express.json())
 app.use(requestLogger)
 
 app.get('/api/accounts', (request, response) => {
@@ -71,6 +69,8 @@ app.put('/api/accounts/:id', (request, response) => {
 const unknownEndpoint = (request, response) => {
   response.status(404).send(({ error: 'Unknown endpoint.'}))
 }
+// handler of requests with unknown endpoint
+app.use(unknownEndpoint)
 
 const errorHandler = (error, request, response, next) => {
   console.error(error.message)
@@ -81,11 +81,9 @@ const errorHandler = (error, request, response, next) => {
 
   next(error)
 }
-
 // this has to be the last loaded middleware.
 app.use(errorHandler)
 
-app.use(unknownEndpoint)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
