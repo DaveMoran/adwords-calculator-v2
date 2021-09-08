@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import StepOne from './components/StepOne';
+// import StepOne from './components/StepOne';
 import StepTwo from './components/StepTwo';
 import StepThree from './components/StepThree';
 import Notification from './components/Notification';
 import accountService from './services/accounts'
-import profileService from './services/profile'
+// import profileService from './services/profile'
 import './App.css';
 
 const App = () => {
-  const [profile, setProfile] = useState({})
+  // const [profile, setProfile] = useState({})
   const [accounts, setAccounts] = useState([])
   const [message, setMessage] = useState(null)
   const [messageType, setMessageType] = useState(null)
@@ -19,24 +19,25 @@ const App = () => {
       .getAll()
       .then(response => {
         setAccounts(response.data)
-      })
-
-    profileService
-      .getAll()
-      .then(response => {
-        setProfile(response.data)
         setShowApp(true)
       })
+
+    // profileService
+    //   .getAll()
+    //   .then(response => {
+    //     setProfile(response.data)
+    //     setShowApp(true)
+    //   })
   }, [])
 
-  const saveBudget = (newBudget) => {
-    const profileObj = { "startingBudget": newBudget }
-    profileService
-      .updateAll(profileObj)
-      .then(response => {
-        setProfile(response.data)
-      })
-  }
+  // const saveBudget = (newBudget) => {
+  //   const profileObj = { "startingBudget": newBudget }
+  //   profileService
+  //     .updateAll(profileObj)
+  //     .then(response => {
+  //       setProfile(response.data)
+  //     })
+  // }
 
   const calculateBudgets = () => {
  // get day of the month
@@ -121,9 +122,9 @@ const App = () => {
           <div className="container">
             <div className="row">
               <div className="col">
-                <StepOne 
+                {/* <StepOne 
                   profile={profile}
-                  saveBudget={saveBudget} />
+                  saveBudget={saveBudget} /> */}
                 <StepTwo
                   accounts={accounts}
                   setAccounts={setAccounts}
