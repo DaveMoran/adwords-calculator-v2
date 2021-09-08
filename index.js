@@ -33,10 +33,12 @@ app.get('/api/accounts/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-app.delete('/api/accounts/:id', (request, response) => {
-  Account.findByIdAndRemove(request.params.id).then(account => {
-    response.json(account)
-  })
+app.delete('/api/accounts/:id', (request, response, next) => {
+  Account.findByIdAndRemove(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
 })
 
 app.post('/api/accounts', (request, response) => {
@@ -58,12 +60,14 @@ app.post('/api/accounts', (request, response) => {
   })
 })
 
-app.put('/api/accounts/:id', (request, response) => {
+app.put('/api/accounts/:id', (request, response, next) => {
   const body = request.body
   
-  Account.findByIdAndUpdate(request.params.id, body).then(account => {
-    response.json(account)
-  })
+  Account.findByIdAndUpdate(request.params.id, body, { new : true })
+    .then(account => {
+      response.json(account)
+    })
+    .catch(error => next(error))
 })
 
 const unknownEndpoint = (request, response) => {
